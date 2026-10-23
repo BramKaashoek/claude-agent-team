@@ -1,0 +1,14 @@
+{
+  "name": "bramkaashoek",
+  "owner": {
+    "name": "Bram Kaashoek"
+  },
+  "description": "Bram Kaashoek's Claude Code plugins.",
+  "plugins": [
+    {
+      "name": "agent-team",
+      "source": "./",
+      "description": "A software team for Claude Code agent teams: a Project Manager lead plus BA, architect, UX, QA, reviewers and developers."
+    }
+  ]
+}
