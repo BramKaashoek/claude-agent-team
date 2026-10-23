@@ -60,7 +60,7 @@ Check that the teammate shows up in the agent panel. If you got a plain subagent
 | UX Specialist | Looks up designs in Figma and supplies design specs for tickets (frames, components, tokens, states, breakpoints, copy). Does little design work itself. | [`ux-specialist`](../../agents/ux-specialist.md) | Sonnet | No |
 | UX Tester | Drives the running app end-to-end against acceptance criteria; reports defects. | [`ux-tester`](../../agents/ux-tester.md) | Sonnet | No |
 | QA Specialist | Writes and maintains automated tests (unit, integration, e2e) covering acceptance criteria and edge cases. | [`qa-specialist`](../../agents/qa-specialist.md) | Sonnet | Yes (tests only) |
-| Reviewer | Adversarial review of changes: bugs, missed edge cases, cut corners, needless complexity. | [`reviewer`](../../agents/reviewer.md) | Opus | No |
+| Reviewer | Adversarial review of risky changes against the ticket, the repo's docs and a risk rubric. | [`reviewer`](../../agents/reviewer.md) | Opus | No |
 | Reviewer (lite) | Quick review of mechanical, low-risk changes: correctness and obvious misses only. | [`reviewer-lite`](../../agents/reviewer-lite.md) | Sonnet | No |
 | Senior Backend | Hard backend implementation and debugging within the architect's design. | [`senior-backend`](../../agents/senior-backend.md) | Opus | Yes |
 | Senior Frontend | Hard frontend implementation and debugging within the architect's design. | [`senior-frontend`](../../agents/senior-frontend.md) | Opus | Yes |
