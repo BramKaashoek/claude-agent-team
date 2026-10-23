@@ -21,7 +21,7 @@ Junior developer definitions are parked in `agents-parked/` and aren't installed
 - `jq`, used by the hook and by `install.sh`.
 - For the BA: the Atlassian MCP (Confluence) and `az` with the `azure-devops` extension.
 - For the UX roles: the Figma MCP. For the UX Tester: [`playwright-cli`](https://www.npmjs.com/package/@playwright/cli).
-- Your repo's `.work-plans/` gitignored, since the team keeps its specs, tickets, state and test evidence there.
+- Your repo's `.agent-work/` gitignored, since the team keeps its specs, tickets, state and test evidence there.
 
 ## Install
 
@@ -57,18 +57,19 @@ Restart Claude Code after either option.
 
 1. Start `claude` in your repo and run `/project-manager` (or `/agent-team:project-manager` if you installed the plugin).
 2. Give it the work, e.g. "Implement PBI 1234" or "Fix the checkout rounding bug".
-3. The PM proposes a **tier** and you confirm it. The tier decides who gets spawned:
+3. The PM proposes a **tier** and you confirm it. Every tier starts with the BA and architect turning the input into agent-ready tickets, even when the input is already a work item. The tier decides who else gets spawned:
 
    | Tier | Roles |
    |---|---|
-   | fix | developer, reviewer-lite |
-   | change | developers, QA, reviewer (lite if mechanical) |
+   | fix | BA, architect, developer, reviewer-lite |
+   | change | BA, architect, developers, QA, reviewer (lite if mechanical), UX Tester (if frontend work) |
    | feature | BA, architect, UX Specialist (if user-facing), developers, QA, reviewer, UX Tester |
    | build | everyone, starting with the BA and architect |
 
-4. Answer the PM's questions. The BA grills the requirements in rounds: you get numbered questions, each with a recommended answer, and replying "yes" accepts the recommendation. The PM batches questions from the whole team and records your decisions.
-5. Approve the ticket breakdown. After that, developers pick up tickets from the shared task list as their blockers clear, and every ticket goes through review and testing.
-6. Commit and ship yourself. Teammates can't `git commit` or `git push`.
+4. The PM creates a worktree off `origin/main` for the work and moves the session into it. All work and every `.agent-work/` file live there.
+5. Answer the PM's questions. The BA grills the requirements in rounds: you get numbered questions, each with a recommended answer, and replying "yes" accepts the recommendation. The PM batches questions from the whole team and records your decisions.
+6. Approve the ticket breakdown. After that, developers pick up tickets from the shared task list as their blockers clear, and every ticket goes through review and testing.
+7. Commit and ship yourself. Teammates can't `git commit` or `git push`.
 
 ### Working with the team
 
@@ -83,10 +84,10 @@ All of these live in your repo and are gitignored, except the glossary and ADRs.
 
 | Path | What |
 |---|---|
-| `.work-plans/<feature>.md` | The spec and tickets (`T01`, `T02`, …) |
-| `.work-plans/<feature>.status.md` | Tier, live teammates, ticket status. Used to rebuild the team after `/resume` |
-| `.work-plans/<feature>.decisions.md` | Append-only log of your decisions |
-| `.work-plans/<feature>-evidence/` | The UX Tester's screenshots, videos and reports |
+| `.agent-work/<feature>.md` | The spec and tickets (`T01`, `T02`, …) |
+| `.agent-work/<feature>.status.md` | Tier, live teammates, ticket status. Used to rebuild the team after `/resume` |
+| `.agent-work/<feature>.decisions.md` | Append-only log of your decisions |
+| `.agent-work/<feature>-evidence/` | Test evidence: the UX Tester's and QA Specialist's files, plus one `index.html` page that the PM builds from their reports |
 | `GLOSSARY.md`, `docs/adr/` | The domain model, maintained by the BA (committed) |
 
 ## Guardrails
@@ -97,7 +98,7 @@ All of these live in your repo and are gitignored, except the glossary and ADRs.
 - A ticket task (subject `T01 …`) can't be created without acceptance criteria in its description.
 - A ticket task can't be completed until its description has a `Verified: <what was run and the result>` line.
 
-The task rules only apply in repos that have a `.work-plans/*.status.md` file.
+The task rules only apply in repos that have a `.agent-work/*.status.md` file.
 
 ## Customizing
 

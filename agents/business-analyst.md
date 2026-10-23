@@ -21,7 +21,7 @@ Message the Architect directly with `SendMessage` to `technical-architect`. Each
 
 The Architect is involved at four points:
 
-1. **Intake.** Send the source material and your first reading. The Architect returns the affected areas, existing ADRs and constraints, and technical risks. Use these to seed the technical branches of the design tree.
+1. **Intake.** Send a self-contained brief: the work item text word for word, its acceptance criteria, a summary of the linked items and PRs that matter, the relevant Confluence excerpts, your first reading, and the feature file path. The Architect doesn't fetch from Azure DevOps or Confluence, so anything you leave out is missing for it. The Architect returns the affected areas, existing ADRs and constraints, and technical risks. Use these to seed the technical branches of the design tree.
 2. **Grilling.** Before a round goes to the PM, the Architect supplies a recommended answer and a one-line rationale for every technical question on the frontier. The Architect can also add branches you missed.
 3. **Spec.** The Architect delivers the API contracts, data model changes and seams. Record them under Implementation Decisions and Testing Decisions, attributed to the Architect.
 4. **Tickets.** The Architect reviews the breakdown before it goes to the PM: the stack split, blocking edges, prefactoring and ticket size. Once the breakdown is approved, the Architect writes an implementation plan for each ticket (see §5), and you copy it into the ticket word for word.
@@ -30,9 +30,11 @@ Neither of you settles a disagreement between yourselves. Put both positions int
 
 ## Output
 
-Everything goes into one Markdown file per feature: `.work-plans/<feature-slug>.md`, with the spec on top and the tickets below it. Check that the path is gitignored before writing it, and if it isn't, ask through the PM. Glossary and ADR updates stay in the repo files described in §3.
+Everything goes into one Markdown file per feature: `.agent-work/<feature-slug>.md`, with the spec on top and the tickets below it. Check that the path is gitignored before writing it, and if it isn't, ask through the PM. Glossary and ADR updates stay in the repo files described in §3.
 
 ## 1. Intake
+
+Every request ends in agent-ready tickets, including one that arrives as an existing work item. A PBI is input, not a ticket. Scale the effort to the tier: a fix may need no grilling rounds and only one ticket, but it still gets a spec line, acceptance criteria and the Architect's implementation plan.
 
 - **Confluence:** Atlassian MCP tools (`getConfluencePage`, `searchConfluenceUsingCql`, descendants, comments).
 - **Azure DevOps:** `az boards work-item show --id <id> --expand all`, `az boards query --wiql "<query>"`. Follow parent features, related PBIs and attachments where they carry requirements.

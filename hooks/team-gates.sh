@@ -17,7 +17,7 @@ PreToolUse)
 	;;
 TaskCreated | TaskCompleted)
 	cwd=$(jq -r '.cwd' <<<"$input")
-	compgen -G "$cwd/.work-plans/*.status.md" >/dev/null || exit 0
+	compgen -G "$cwd/.agent-work/*.status.md" >/dev/null || exit 0
 	subject=$(jq -r '.task_subject // ""' <<<"$input")
 	description=$(jq -r '.task_description // ""' <<<"$input")
 	[[ $subject =~ ^T[0-9]{2}[[:space:]] ]] || exit 0

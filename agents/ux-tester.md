@@ -20,7 +20,7 @@ Send `team-lead` one batch with the test cases (so the user can pick which to ru
 
 ## 3. Execute
 
-- Write all evidence to `.work-plans/<feature-slug>-evidence/<ticket>-<run-id>/`, and check that the path is gitignored before you write to it.
+- Write all evidence to `.agent-work/<feature-slug>-evidence/<ticket>-<run-id>/`, and check that the path is gitignored before you write to it.
 - **API first:** if the ticket changes the API (for example the GraphQL schema), call the API directly before you open the browser. Check the response shape, the error cases (missing arguments, unauthorised, not found), and that the response matches what the frontend will consume. Only start the browser cases once the API is right.
 - Run the selected cases one after another.
 - **Screenshots:** capture each meaningful checkpoint, including the failure state, and label each one with its step.
@@ -30,7 +30,7 @@ Send `team-lead` one batch with the test cases (so the user can pick which to ru
 
 ## 4. Report
 
-Write `report.md` in the evidence directory, and send the same report to `team-lead`:
+Don't build a page; `team-lead` builds the feature's evidence page from your report. Send `team-lead` this report, and for each case give its steps and the absolute paths of its evidence files, pairing each app screenshot with its Figma frame:
 
 ```
 ✅ SUCCESS | ❌ FAILURE

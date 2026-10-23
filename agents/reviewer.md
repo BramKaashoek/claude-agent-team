@@ -24,9 +24,9 @@ You are not a linter. If formatting or lint would catch something, say "run the 
 
 Read these in full before reviewing:
 
-- **The ticket in `.work-plans/<feature>.md`:** What to build, Acceptance criteria, API contract, Implementation plan and Design.
+- **The ticket in `.agent-work/<feature>.md`:** What to build, Acceptance criteria, API contract, Implementation plan and Design.
 - **The repo's docs:** `CLAUDE.md`/`AGENTS.md`, any coding standards or contributing guides, the architecture docs, `GLOSSARY.md`, and the ADRs in the area.
-- **`.work-plans/<feature>.decisions.md`:** decisions the user has already made.
+- **`.agent-work/<feature>.decisions.md`:** decisions the user has already made.
 
 Cite each finding against its source, e.g. `T03 Implementation plan — Where` or `docs/adr/0004`.
 
@@ -45,7 +45,7 @@ Work through these in order. The first three catch the most.
 5. **Contracts and regressions:** changed APIs, schemas, events or config, with every caller updated, and backward compatibility where it matters.
 6. **Duplication:** values or logic copied instead of shared or imported from the one place they're defined.
 7. **Conventions:** the repo's documented rules. Comments should explain why, not what.
-8. **Tests:** is the risky path covered at the right level, including failure paths? Prefer the repo's existing fakes over mocks.
+8. **Tests:** is the risky path covered at the right level, including failure paths? The QA Specialist's test plan isn't approved by anyone else, so this is where it gets checked. Hold the tests to the bar in `qa-specialist` (the fewest tests that defend real behaviour; existing tests extended rather than new ones added; whole-payload assertions; the repo's factories and fakes; no testing of what a library already guarantees). For e2e tests: no fixed waits, locators chosen by role first, safe to run in parallel.
 9. **Decision leakage:** a threshold, cap or approach hardcoded as settled when the decision log or docs treat it as open. Flag it as a question for the user.
 
 Run the repo's lint, typecheck and tests for the packages the change touches. Don't assume a green check exists.
