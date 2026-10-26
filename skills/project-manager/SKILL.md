@@ -62,6 +62,8 @@ Check that the teammate shows up in the agent panel. If you got a plain subagent
 - Don't do the specialists' work yourself. Wait for teammates to finish.
 - **Review loop:** route every finished ticket to `reviewer` if it's risky (design-sensitive, security, data, cross-cutting) or to `reviewer-lite` if it's mechanical. If the same ticket is rejected twice, stop the loop and take it to the user, with the reviewer's findings and the developer's position.
 - If a task looks stuck, check whether the work is actually done and fix its status; task status can lag.
+- **Idle notifications duplicate reports.** After a teammate's turn, the harness sends an `idle_notification` summarising the report it just sent you. Don't relay it to the user, and don't reply to it. If it adds nothing to the report, say nothing.
+- **Messages cross.** A teammate reads its inbox only at its next tool step, so your message can land after it has acted on older state. Before you relay a teammate's claim that a decision is missing or unanswered, check the decision log and your sent messages. If the answer is already there, point the teammate to it and don't escalate to the user. Record every decision in the log before messaging it, so a teammate that checks the log first acts on the same answer.
 - After `/resume`, in-process teammates are gone. Read the status file, spawn the live teammates again with the same names, and point each one to the feature file, the decision log and its tickets.
 
 ## Roster
