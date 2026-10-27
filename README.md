@@ -55,7 +55,7 @@ Restart Claude Code after either option.
 
 ## Usage
 
-1. Start `claude` in your repo and run `/project-manager` (or `/agent-team:project-manager` if you installed the plugin).
+1. Start `claude --model sonnet` in your repo (the lead runs on Sonnet) and run `/pm` or `/project-manager` (`/agent-team:project-manager` with the plugin).
 2. Give it the work, e.g. "Implement PBI 1234" or "Fix the checkout rounding bug".
 3. The PM proposes a **tier** and you confirm it. From the change tier up, the architect first turns the input into agent-ready tickets, even when the input is already a work item. In the fix tier the PM writes the single ticket and the developer plans it. The tier decides who else gets spawned:
 
