@@ -21,6 +21,8 @@ link() {
 
 for f in "$repo"/agents/*.md; do link "$f" "$claude/agents/$(basename "$f")"; done
 link "$repo/skills/project-manager" "$claude/skills/project-manager"
+link "$repo/skills/writing-tests" "$claude/skills/writing-tests"
+link "$repo/commands/pm.md" "$claude/commands/pm.md"
 link "$repo/hooks/team-gates.sh" "$claude/hooks/team-gates.sh"
 
 settings="$claude/settings.json"

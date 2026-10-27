@@ -3,7 +3,7 @@ set -euo pipefail
 
 input=$(cat)
 event=$(jq -r '.hook_event_name' <<<"$input")
-roster="business-analyst technical-architect ux-specialist ux-tester qa-specialist reviewer reviewer-lite senior-backend junior-backend senior-frontend junior-frontend"
+roster="architect ux-specialist ux-tester reviewer reviewer-lite senior-backend junior-backend senior-frontend junior-frontend"
 
 case "$event" in
 PreToolUse)
@@ -17,7 +17,7 @@ PreToolUse)
 	;;
 TaskCreated | TaskCompleted)
 	cwd=$(jq -r '.cwd' <<<"$input")
-	compgen -G "$cwd/.agent-work/*.status.md" >/dev/null || exit 0
+	compgen -G "$cwd/.agent-work/*/status.md" >/dev/null || exit 0
 	subject=$(jq -r '.task_subject // ""' <<<"$input")
 	description=$(jq -r '.task_description // ""' <<<"$input")
 	[[ $subject =~ ^T[0-9]{2}[[:space:]] ]] || exit 0

@@ -8,7 +8,7 @@
     {
       "name": "agent-team",
       "source": "./",
-      "description": "A software team for Claude Code agent teams: a Project Manager lead plus BA, architect, UX, QA, reviewers and developers."
+      "description": "A software team for Claude Code agent teams: a Project Manager lead plus architect, UX, reviewers and developers."
     }
   ]
 }
