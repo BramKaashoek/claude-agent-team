@@ -101,6 +101,13 @@ All of these live in your repo and are gitignored, except the glossary and ADRs.
 
 The task rules only apply in repos that have a `.agent-work/*/status.md` file.
 
+Two PostToolUse code gates ship with the plugin (sourced from `labdigital-main/agentic-work`, `skills/code-gates`):
+
+- `hooks/comment-gate.sh` blocks added comments that restate the code instead of giving a non-obvious why.
+- `hooks/test-gate.sh` has an agentic reviewer (`claude -p`, brief in `hooks/test-gate-prompt.md`) judge newly added tests KEEP / DELETE / REWRITE and blocks on DELETE/REWRITE.
+
+Both need `claude` and `jq` on PATH. `install.sh` doesn't register them; use the plugin's `hooks.json`.
+
 ## Customizing
 
 - **Roles:** edit the files in `agents/`. Each one's body is its full instructions. Teammates ignore the `skills:` frontmatter field, so put instructions in the body.
